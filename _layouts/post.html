@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<article class="post container">
+  <div class="post-meta">
+    {% if page.date %}
+    <span class="post-meta-span date">{{ page.date | date:"%Y %B %d" }}</span>
+    {% endif %}
+    {% if page.tags.size > 0 %}
+    <span class="post-meta-span tag">{{ page.tags | join: ', ' }}</span>
+    {% endif %}
+  </div>
+
+  <h1 class="post-title">{{ page.title }}</h1>
+  {{ content }}
+    
+</article>
+
+<div id="p-toc" class="post-toc bs-docs-sidebar"></div>
+
+<div class="pagination">
+  <ul>
+    {% if page.previous %}
+    <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }} " title="{{ page.previous.title }}" class="forward" target="_self" id="goto_previous_page">&larr; 前一篇</a></li>
+    {% else %}
+    {% endif %}
+    {% if page.next %}
+    <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}" target="_self" class="forward" id="goto_next_page">下一篇 &rarr;</a></li>
+    {% else %}
+    {% endif %}
+  </ul>
+</div>
+    
+<div class="post-share">
+  <div class="container">
+    <a href="https://twitter.com/share?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&text={{ page.title }}" target="_blank" class="post-share-icon twitter"></a>
+    <a href="https://www.evernote.com/clip.action?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}" target="_blank" class="post-share-icon evernote"></a>
+    <a href="http://service.weibo.com/share/share.php?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}" target="_blank" class="post-share-icon weibo"></a>
+  </div>
+</div>
+
+{% if site.disqus_shortname %}
+<div class="comment container">
+  <div id="disqus_thread">
+    <a href=""></a>
+  </div>
+</div>
+{% endif %}
+
+{% if site.duoshuo_short_name %}
+{% include duoshuo.html %}
+{% endif %}

@@ -1,0 +1,49 @@
+<aside id="sidebar">
+  <div id="sidebar-left">
+    <a id="sidebar-avatar" href="{{ "/" | prepend: site.baseurl }}">
+      <img id="sidebar-avatar-img" alt="{{ site.tittle }}" src="{{ site.avatar }}"/>
+    </a>
+
+    <div id="sidebar-social">
+      <a href="{{ "/feed.xml" | prepend: site.baseurl }}" class="sidebar-social-icon feed"></a>
+      <a href="mailto:{{ site.email }}" class="sidebar-social-icon email"></a>
+      <!--{% include social.html %}-->
+    </div>
+
+    <ul id="sidebar-tags">
+      <li class="sidebar-tag active" data-filter="all">全部文章</li>
+            
+      {% assign sorted_categories = site.categories | sort %}
+      {% for category in sorted_categories %} 
+        <li class="sidebar-tag sidebar-select-category" data-filter="category_{{ category[0] }}">{{ category[0] }}</li>
+      {% endfor %}
+     
+      {% assign sorted_tags = site.tags | sort %}
+      {% for tag in sorted_tags %} 
+        <li class="sidebar-tag sidebar-select-tag" hidden data-filter="tag_{{ tag[0] }}">{{ tag[0] }}</li>
+      {% endfor %}
+    </ul>
+    
+    <div id="sidebar-left-bottom">
+      <a id="toggle_to_category" class="toc_toggle_btn"></a>
+      <a id="toggle_to_tag" class="toc_toggle_btn"></a>
+    </div>
+  </div>
+
+  <div id="sidebar-right">
+    <div id="search-box">
+      <input id="search-input" type="text" placeholder="Search" />
+    </div>
+
+    <nav id="toc">
+      {% for post in site.posts %}
+        <a class="toc-link"
+           data-tags="{% for tag in post.tags %} tag_{{ tag }} {% endfor %} {% for category in post.categories %} category_{{ category }} {% endfor %}"
+           href="{{ post.url }}">
+          <span>{{ post.title }}</span>
+          <span class="toc-link-date">{{ post.date | date: "%b %Y" }}</span>
+        </a>
+      {% endfor %}
+    </nav>
+  </div>
+</aside>

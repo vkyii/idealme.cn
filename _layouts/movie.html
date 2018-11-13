@@ -1,0 +1,40 @@
+---
+layout: post
+---
+
+  <div>
+    {% for movie in page.movies %}
+    <div style="border:1px solid #d9d9d9; -webkit-box-shadow:2px 2px 5px #d9d9d9; padding: 10px">
+      <div style="padding: .4em .6em .4em;font-weight: bold;line-height: 1;color: inherit;text-align: center;white-space: nowrap;vertical-align: baseline;background-color: #fff"> {{ movie.title }} </div>
+      <hr style="border : 1px dashed #d9d9d9; margin: 15px 0" />
+      <table width="100%">
+        <tbody>
+          <td rowspan="7" width="20%"><img src="{{ movie.cover }}"></td>
+          <tr><td align="right" style="width:70px; color:#666">导演：</td><td>{{ movie.director }}</td></tr>
+          <tr><td align="right" style="color:#666">演员：</td><td>{{ movie.actors }}</td></tr>
+          <tr><td align="right" style="color:#666">语言：</td><td>{{ movie.language }}</td></tr>
+          <tr><td align="right" style="color:#666">时间：</td><td>{{ movie.publishtime }}</td></tr>
+          <tr>
+            <td align="right" style="color:#666">链接：</td>
+            <td><a href="{{ movie.link }}" title="{{ movie.link }}" target="_blank" style="color: #29A284;">电影链接</a></td>
+          </tr>
+          <tr>
+            <td align="right" style="color:#666">状态：</td>
+            <td style="display: inline;padding: .2em .6em .3em;font-size: 75%;font-weight: bold;line-height: 1;color: #fff;text-align: center;white-space: nowrap;vertical-align: baseline;border-radius: .25em;text-shadow: 0px 0px 0 #fff;
+            {% if movie.status == '已看' %}
+              background-color: #5cb85c;
+            {% elsif movie.status == '在看' %}
+              background-color: #5bc0de;
+            {% elsif movie.status == '未看' %}
+              background-color: #777;
+            {% endif %}">
+            {{ movie.status }}
+            </td>
+          </tr>
+          <tr><td colspan="3"><span style="color:#666">评论：</span>{{ movie.description }}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <br/>
+    {% endfor %}
+  </div>

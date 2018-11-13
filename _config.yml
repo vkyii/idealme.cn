@@ -1,0 +1,49 @@
+# Site settings
+title: 理想的我
+email: vkyii@foxmail.com
+url: http://www.idealme.cn
+description: 每一次成功,都来之不易.
+# 站点信息
+rss_url: /pages/atom.xml
+
+# Social account
+# twitter:  username
+# weibo:    ID
+# github:   vkyii
+# codepen:  username
+# dribbble: username
+
+# Comment
+# disqus_shortname: discussion_shortname
+
+#多说配置
+#duoshuo_short_name: vkyii
+
+
+# Build settings
+permalink: /:year/:month/:day/:title.html
+markdown: kramdown
+
+kramdown:
+  input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
+
+sass:
+  style: compressed
+
+avatar: /assets/img/avatar.png
+favicon: /assets/img/qrcode.jpg
+
+collections:
+  private:
+    output: true
+    special: true
+    ispost: true
+    permalink: /:year/:month/:day/:title.html
+    staticlink: ""
+  public:
+    output: true
+    special: true
+    ispost: true
+    permalink: /:year/:month/:day/:title.html
+    staticlink: ""
+
