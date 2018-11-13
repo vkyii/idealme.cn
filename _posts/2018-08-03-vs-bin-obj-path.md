@@ -1,6 +1,6 @@
 ---
 title: Visual Studio 配置bin和obj目录
-tags: VS,.NetCore
+tags: VS, .NetCore
 notebook: 软件工具
 ---
 # 配置
